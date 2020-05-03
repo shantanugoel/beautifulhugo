@@ -2,8 +2,8 @@
   "@context" : "http://schema.org",
   "@type" : "BlogPosting",
   {{ if .Params.categories }}{{ range .Params.categories }}"articleSection" : "{{ . }}",{{ end }}{{ end }}
-  "name" : "{{ .Title | safeJS }}",
-  "headline" : "{{ .Title | safeJS }}",
+  "name" : {{ .Title | safeJS }},
+  "headline" : {{ .Title | safeJS }},
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "{{ .Permalink }}"
@@ -33,7 +33,7 @@
   "url" : "{{ .Permalink }}",
   "wordCount" : "{{ .WordCount }}",
   "image" : "{{ .Site.Params.logo | absURL }}",
-  "keywords" : [ "{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}" ],
+  "keywords" : [ {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} ],
   "publisher" : {
     "@type": "Organization",
     "name" : "{{ .Site.BaseURL }}",
